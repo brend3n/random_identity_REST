@@ -1,0 +1,6 @@
+[submodule "imports/Random-Name-Generator"]
+	path = imports/Random-Name-Generator
+	url = https://github.com/brend3n/Random-Name-Generator.git
+[submodule "imports/myTempEmail-API"]
+	path = imports/myTempEmail-API
+	url = https://github.com/brend3n/myTempEmail-API.git

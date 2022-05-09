@@ -78,8 +78,3 @@ class Random_Identity:
     def get_name(self):
         self.first_name = random_first_name_updated(path="./imports/Random-Name-Generator/")
         self.last_name = random_last_name_updated(path="./imports/Random-Name-Generator/")
-        
-        
-        
-person = Random_Identity()
-person.to_string()

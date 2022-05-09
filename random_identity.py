@@ -3,15 +3,15 @@ import requests
 import urllib3
 import sys
 
-from random_name import random_first_name_updated, random_last_name_updated
-from bs4 import BeautifulSoup
-from web_scraper import get_soup_adv
-
-
 sys.path.insert(0,"./imports")
 sys.path.insert(0,'./imports/Random-Name-Generator')
 sys.path.insert(0,'./imports/web_scraper')
 sys.path.insert(0,'./imports/myTempEmail-API')
+
+from random_name import random_first_name_updated, random_last_name_updated
+from bs4 import BeautifulSoup
+from web_scraper import get_soup_adv
+
 urllib3.disable_warnings()
 
 
@@ -28,20 +28,20 @@ class Random_Identity:
     def __init__(self):
         self.get_name()
         self.get_email()
-        self.get_phone_number()
         self.get_random_state()
         self.get_random_city()
         self.get_address()
+        self.get_phone_number()
         return
     
     def to_string(self):
         print(f"First Name: {self.first_name}\n"
-                "Last Name: {self.last_name}\n"
-                "Phone Number: {self.phone_number}\n"
-                "Email: {self.email}\n"
-                "State: {self.state}\n"
-                "City: {self.city}\n"
-                "Address: {self.address}\n")
+                f"Last Name: {self.last_name}\n"
+                f"Phone Number: {self.phone_number}\n"
+                f"Email: {self.email}\n"
+                f"State: {self.state}\n"
+                f"City: {self.city}\n"
+                f"Address: {self.address}\n")
 
 
     # TODO: Change this so it is 10 minute temporary phone number or longer
@@ -63,7 +63,7 @@ class Random_Identity:
         self.state = random.choice(states)
 
     def get_random_city(self):
-        url = f"https://locations.chipotle.com/{str(state).lower()}"
+        url = f"https://locations.chipotle.com/{str(self.state).lower()}"
         soup = get_soup_adv(url)
         cities = soup.find_all("a", "Directory-listLink")
         self.city = random.choice(cities)['href']
@@ -72,8 +72,14 @@ class Random_Identity:
     def get_address(self):
         city = self.city
         state = self.state
+        self.address = "TODO"
         
 
     def get_name(self):
-        self.first_name = random_first_name_updated(path="./imports//Random-Name-Generator")
-        self.last_name = random_last_name_updated(path="./imports/Random-Name-Generator")
+        self.first_name = random_first_name_updated(path="./imports/Random-Name-Generator/")
+        self.last_name = random_last_name_updated(path="./imports/Random-Name-Generator/")
+        
+        
+        
+person = Random_Identity()
+person.to_string()

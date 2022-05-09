@@ -28,29 +28,29 @@ class Random_Identity:
         return
     
     def to_string(self):
-        print(f"First Name: {self.first_name}\n
-                Last Name: {self.last_name}\n
-                Phone Number: {self.phone_number}\n
-                Email: {self.email}\n
-                State: {self.state}\n
-                City: {self.city}\n
-                Address: {self.address}\n")
+        print(f"First Name: {self.first_name}\n"
+                "Last Name: {self.last_name}\n"
+                "Phone Number: {self.phone_number}\n"
+                "Email: {self.email}\n"
+                "State: {self.state}\n"
+                "City: {self.city}\n"
+                "Address: {self.address}\n")
 
 
     # TODO: Change this so it is 10 minute temporary phone number or longer
     def get_phone_number(self):
         state = self.state
         url = f"https://www.randomphonenumbers.com/Generator/us_phone_number?state={state}&city="
-	soup = get_soup_adv(url)
-	soup = soup.find_all("p", "text-center code")
-	soup = [ele.text for ele in soup]
+        soup = get_soup_adv(url)
+        soup = soup.find_all("p", "text-center code")
+        soup = [ele.text for ele in soup]
         phone_number = random.choice(soup).replace("-","")
 
         self.phone_number = phone_number
 
     # TODO: Change this to use the other API
     def get_email(self):
-        return
+        self.email = "TODO"
 
     def get_random_state(self):
         self.state = random.choice(states)
@@ -62,10 +62,10 @@ class Random_Identity:
         self.city = random.choice(cities)['href']
 
     # TODO: Finish this function
-    def get_address():
+    def get_address(self):
         city = self.city
         state = self.state
-        pass
+        
 
     def get_name(self):
         self.first_name = random_first_name_updated(path="./imports//Random-Name-Generator")

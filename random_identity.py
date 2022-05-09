@@ -1,10 +1,17 @@
 import random
 import requests
 import urllib3
+import sys
 
 from random_name import random_first_name_updated, random_last_name_updated
 from bs4 import BeautifulSoup
+from web_scraper import get_soup_adv
 
+
+sys.path.insert(0,"./imports")
+sys.path.insert(0,'./imports/Random-Name-Generator')
+sys.path.insert(0,'./imports/web_scraper')
+sys.path.insert(0,'./imports/myTempEmail-API')
 urllib3.disable_warnings()
 
 

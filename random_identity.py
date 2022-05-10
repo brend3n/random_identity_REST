@@ -4,7 +4,6 @@ import urllib3
 import sys
 from random_address import real_random_address
 
-
 sys.path.insert(0,"./imports")
 sys.path.insert(0,'./imports/Random-Name-Generator')
 sys.path.insert(0,'./imports/web_scraper')
@@ -15,8 +14,6 @@ from bs4 import BeautifulSoup
 from web_scraper import get_soup_adv
 
 urllib3.disable_warnings()
-
-
 
 # Used for getting random phone numbers
 states = [ 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA',
@@ -66,15 +63,13 @@ class Random_Identity:
     def get_email(self):
         self.email = "TODO"
 
-    # TODO: Finish this function
     def get_address(self):
         
         dicty = real_random_address()
         self.address = str(dicty['address1']) + str(dicty['address2'])
         self.city = dicty['city']
         self.state = dicty['state']
-        self.postalcode = dicty['postalCode']
-        
+        self.postalcode = dicty['postalCode']        
     
     def get_name(self):
         self.first_name = random_first_name_updated(path="./imports/Random-Name-Generator/")

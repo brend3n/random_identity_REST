@@ -35,14 +35,19 @@ class Random_Identity:
         return
     
     def to_string(self):
-        print(f"First Name: {self.first_name}\n"
-                f"Last Name: {self.last_name}\n"
-                f"Phone Number: {self.phone_number}\n"
-                f"Email: {self.email}\n"
-                f"State: {self.state}\n"
-                f"City: {self.city}\n"
-                f"Address: {self.address}\n")
-
+        stringy = f"First Name: {self.first_name}\nLast Name: {self.last_name}\nPhone Number: {self.phone_number}\nEmail: {self.email}\nState: {self.state}\nCity: {self.city}\nAddress: {self.address}\n"
+        return stringy
+    
+    def to_json(self):
+        return {
+            "First Name" : self.first_name,
+            "Last Name" : self.last_name,
+            "Phone Number": self.phone_number,
+            "Email" : self.email,
+            "State": self.state,
+            "City" : self.city,
+            "Address" : self.address
+            }
 
     # TODO: Change this so it is 10 minute temporary phone number or longer
     def get_phone_number(self):

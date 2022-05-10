@@ -7,14 +7,13 @@ from time import sleep
 app = FastAPI()
 
 def get_identity():
-    data = json.dumps(Random_Identity.to_string())
+    data = json.dumps(Random_Identity.to_json())
     return data
 
 @app.get("/")
 # async def all(background_tasks: BackgroundTasks):
 async def all():
     # background_tasks.add_task(get_identity)
-    data = Random_Identity().to_string()
-    
+    data = Random_Identity().to_json()
     return data
 

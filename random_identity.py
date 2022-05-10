@@ -2,6 +2,8 @@ import random
 import requests
 import urllib3
 import sys
+from random_address import real_random_address
+
 
 sys.path.insert(0,"./imports")
 sys.path.insert(0,'./imports/Random-Name-Generator')
@@ -26,10 +28,10 @@ states = [ 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA',
 
 class Random_Identity:
     def __init__(self):
+        self.state = "TODO"
+        self.city = "TODO"
         self.get_name()
         self.get_email()
-        self.get_random_state()
-        self.get_random_city()
         self.get_address()
         self.get_phone_number()
         return
@@ -64,22 +66,19 @@ class Random_Identity:
     def get_email(self):
         self.email = "TODO"
 
-    def get_random_state(self):
-        self.state = random.choice(states)
-
-    def get_random_city(self):
-        url = f"https://locations.chipotle.com/{str(self.state).lower()}"
-        soup = get_soup_adv(url)
-        cities = soup.find_all("a", "Directory-listLink")
-        self.city = random.choice(cities)['href']
-
     # TODO: Finish this function
     def get_address(self):
-        city = self.city
-        state = self.state
-        self.address = "TODO"
         
-
+        dicty = real_random_address()
+        self.address = str(dicty['address1']) + str(dicty['address2'])
+        self.city = dicty['city']
+        self.state = dicty['state']
+        self.postalcode = dicty['postalCode']
+        
+    
     def get_name(self):
         self.first_name = random_first_name_updated(path="./imports/Random-Name-Generator/")
         self.last_name = random_last_name_updated(path="./imports/Random-Name-Generator/")
+
+person = Random_Identity()
+print(person.to_json())

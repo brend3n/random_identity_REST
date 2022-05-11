@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "./imports/pymailtm/pymailtm",
+        "./imports",
+        "./imports/Random-Name-Generator"
+    ]
+}

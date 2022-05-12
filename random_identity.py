@@ -13,7 +13,7 @@ sys.path.insert(0,'./imports/pymailtm/pymailtm')
 from random_name import random_first_name_updated, random_last_name_updated
 from bs4 import BeautifulSoup
 from web_scraper import get_soup_adv
-from pymailtm import MailTm
+from pymailtm import MailTm, generate_username
 
 urllib3.disable_warnings()
 
@@ -65,11 +65,20 @@ class Random_Identity:
 
         self.phone_number = phone_number
 
-    # TODO: Change this to use the other API
     def get_email(self):
-        mail_obj = MailTm().get_account()
-        self.emailaddress = mail_obj.address
-        self.emailpassword  = mail_obj.password
+        self.emailaddress, self.emailpassword, res = self.get_email_mailtm()
+        print(f"Response: {res}")
+        
+   # Email from MailTM api
+    def get_email_mailtm(self):
+        """ use MailTm._make_account_request to create a new random account """
+        mt = MailTm()
+        domain = mt._get_domains_list()[0]
+        username =  generate_username(1)[0].lower()
+        address = f"{username}@{domain}"
+        password = mt._generate_password(6)
+        response = mt._make_account_request("accounts", address, password)
+        return address, password, response
         
 
     def get_address(self):

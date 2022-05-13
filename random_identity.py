@@ -67,7 +67,7 @@ class Random_Identity:
 
     def get_email(self):
         self.emailaddress, self.emailpassword, res = self.get_email_mailtm()
-        print(f"Response: {res}")
+        # print(f"Response: {res}")
         
    # Email from MailTM api
     def get_email_mailtm(self):
@@ -93,6 +93,6 @@ class Random_Identity:
         self.first_name = random_first_name_updated(path="./imports/Random-Name-Generator/")
         self.last_name = random_last_name_updated(path="./imports/Random-Name-Generator/")
 
-person = Random_Identity()
+# person = Random_Identity()
 
 

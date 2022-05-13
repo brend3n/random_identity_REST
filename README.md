@@ -8,4 +8,4 @@
 
 ### Use
 
-Make a `GET request` to <ENTER SERVER NAME>
+Make a `GET request` to **https://lmnm1n.deta.dev/**
